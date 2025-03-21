@@ -21,11 +21,7 @@ import android.view.View
 import com.example.blureffectproject.utils.BlurUtils
 import kotlin.math.hypot
 
-class DualCircleButtonView @JvmOverloads constructor(
-    context: Context,
-    attrs: AttributeSet? = null
-) : View(context, attrs)
-{
+class DualCircleButtonView @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null) : View(context, attrs) {
 
     private val outerPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         color = Color.WHITE
@@ -33,47 +29,33 @@ class DualCircleButtonView @JvmOverloads constructor(
         strokeWidth = 5f
         pathEffect = DashPathEffect(floatArrayOf(15f, 10f), 0f)
     }
-
     private val innerPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         color = Color.WHITE
         style = Paint.Style.STROKE
         strokeWidth = 5f
     }
-
     private var outerRotationAngle = 0f
     private var innerRotationAngle = 0f
-
     private var centerX = 500f
     private var centerY = 500f
-
     private var outerRadius = 200f
     private var innerRadius = outerRadius * 0.6f
-
     private var outerScaleFactor = 1f
     private var innerScaleFactor = 1f
-
     private var lastTouchX = 0f
     private var lastTouchY = 0f
     private var activePointerId = MotionEvent.INVALID_POINTER_ID
-
     private var initialDistance = 0f
-
     private val rotationSensitivity = 0.5f
-
     private var showCircle = true
     private var isDragging = false
     private var toggleBlur = false
-    private var blurIntensity: Float = 0f  // Default blur level
-
-
-    // Handler to manage the delayed hide
+    private var blurIntensity: Float = 0f
     private val handler = Handler(Looper.getMainLooper())
     private val hideRunnable = Runnable {
         showCircle = false
         invalidate()
     }
-
-
     private var originalBitmap: Bitmap? = null
     private var blurredBitmap: Bitmap? = null
     private val blurPaint = Paint(Paint.ANTI_ALIAS_FLAG)
@@ -422,6 +404,7 @@ class DualCircleButtonView @JvmOverloads constructor(
         blurIntensity = intensity
         updateBlurEffect()
     }
+
     private fun updateBlurEffect() {
         blurredBitmap = originalBitmap?.let { original ->
             BlurUtils.blurBitmap(context, original, blurIntensity)

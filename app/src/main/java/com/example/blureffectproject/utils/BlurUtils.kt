@@ -14,7 +14,6 @@ import androidx.annotation.RequiresApi
 import androidx.core.graphics.createBitmap
 
 object BlurUtils {
-
     fun blurBitmap(context: Context, bitmap: Bitmap, radius: Float): Bitmap {
         val width = bitmap.width
         val height = bitmap.height
@@ -36,7 +35,6 @@ object BlurUtils {
 
         return outputBitmap
     }
-
     @RequiresApi(Build.VERSION_CODES.S)
     fun applyRadialBlur(context: Context, bitmap: Bitmap, centerX: Float, centerY: Float, blurAmount: Float, blurPasses: Int): Bitmap {
         val width = bitmap.width
@@ -74,7 +72,6 @@ object BlurUtils {
 
         return outputBitmap
     }
-
     fun createZoomBlur(context: Context, bitmap: Bitmap, centerX: Float, centerY: Float, zoomAmount: Float, blurPasses: Int): Bitmap {
         if (bitmap.isRecycled) {
             throw IllegalArgumentException("Original bitmap is already recycled!")
@@ -117,7 +114,6 @@ object BlurUtils {
         }
         return outputBitmap
     }
-
     fun applyLinearBlur(context: Context, bitmap: Bitmap): Bitmap {
         val rs = RenderScript.create(context)
 

@@ -1,17 +1,5 @@
 package com.example.blureffectproject.models
 
-import android.annotation.SuppressLint
-import android.graphics.Canvas
-import android.graphics.Color
-import android.graphics.LinearGradient
-import android.graphics.Matrix
-import android.graphics.Paint
-import android.graphics.Path
-import android.graphics.PorterDuff
-import android.graphics.PorterDuffXfermode
-import android.graphics.RectF
-import android.graphics.Shader
-
 enum class BlurType {
     RADIAL,
     MOTION,
@@ -104,13 +92,13 @@ enum class BlurType {
 //                }
 //
 //                val scaledMask = Bitmap.createScaledBitmap(maskBitmap, width, height, true)
-////                val blurredBitmap = blurBitmap(this@BlurActivity, originalBitmap, blurRadius)
+//                val blurredBitmap = blurBitmap(this@BlurActivity, originalBitmap, blurRadius)
 //
-////                val compositedBitmap = compositeBitmaps(originalBitmap, blurredBitmap, scaledMask)
-////                val compositedBitmap = compositeBitmaps(originalBitmap, radialBlurredBackground, scaledMask)
-////                val centerX = originalBitmap.width / 2f
-////                val centerY = originalBitmap.height / 2f
-////                val zoomBlurredBackground = createZoomBlur(originalBitmap, centerX, centerY, zoomAmount = 1.05f, blurPasses = 15)
+//                val compositedBitmap = compositeBitmaps(originalBitmap, blurredBitmap, scaledMask)
+//                val compositedBitmap = compositeBitmaps(originalBitmap, radialBlurredBackground, scaledMask)
+//                val centerX = originalBitmap.width / 2f
+//                val centerY = originalBitmap.height / 2f
+//                val zoomBlurredBackground = createZoomBlur(originalBitmap, centerX, centerY, zoomAmount = 1.05f, blurPasses = 15)
 //
 //                // ⏩ Instead of blurBitmap(), use radial blur on background!
 //                val radialBlurredBackground = createRadialBlur(originalBitmap, blurRadius)

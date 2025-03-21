@@ -12,13 +12,7 @@ import android.widget.ImageView
 import android.widget.Toast
 
 class ImageCaptureHelper(private val context: Context) {
-
-    fun captureAndSaveImage(
-        imageView: ImageView,
-        dualCircleButtonView: View,
-        linerButtonView: View,
-        containerView: View
-    ) {
+    fun captureAndSaveImage(imageView: ImageView, dualCircleButtonView: View, linerButtonView: View, containerView: View) {
         // Get the actual bitmap displayed inside ImageView
         val drawable = imageView.drawable as? BitmapDrawable
         val originalBitmap = drawable?.bitmap ?: return // Exit if no image
@@ -78,7 +72,6 @@ class ImageCaptureHelper(private val context: Context) {
         containerView.y = originalY
         containerView.requestLayout()
     }
-
     private fun saveBitmapToGallery(bitmap: Bitmap) {
         val filename = "CapturedImage_${System.currentTimeMillis()}.jpg"
 

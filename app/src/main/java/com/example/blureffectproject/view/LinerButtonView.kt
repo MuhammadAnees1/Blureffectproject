@@ -34,7 +34,6 @@ class LinerButtonView @JvmOverloads constructor(context: Context, attrs: Attribu
         strokeWidth = 4f
         style = Paint.Style.STROKE
     }
-
     private val dottedLinePaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         color = Color.WHITE
         strokeWidth = 4f
@@ -42,32 +41,24 @@ class LinerButtonView @JvmOverloads constructor(context: Context, attrs: Attribu
         pathEffect = DashPathEffect(floatArrayOf(20f, 10f), 0f)
     }
     private var originalBitmap: Bitmap? = null
-
     private val blurPaint = Paint(Paint.ANTI_ALIAS_FLAG)
-
     private var blurredBitmap: Bitmap? = null
-    private var bitmapShader: BitmapShader? = null
     private var lastRotation = 0f
     private var initialRotation = 0f
-
     private var scaleFactor = 1f
     private val minScale = 0.5f
     private val maxScale = 5f
     private var lastDistance = 0f
-
     // Frame control
     private var lastTouchX = 0f
     private var lastTouchY = 0f
-
     private var isDraggingFrame = false
     private var isRotating = false
-
     private var translationX = 0f
     private var translationY = 0f
     private var rotationDegrees = 0f
     var bottomLineOffset = 5f
     var topLineOffset = 5f
-
     // New logic variables
     private var areLinesVisible = true
     private val handler = Handler(Looper.getMainLooper())
@@ -398,6 +389,7 @@ class LinerButtonView @JvmOverloads constructor(context: Context, attrs: Attribu
         handler.removeCallbacks(hideLinesRunnable)
         handler.postDelayed(hideLinesRunnable, 2000)
     }
+
     private fun calculateAngle(event: MotionEvent): Float {
         return if (event.pointerCount >= 2) {
             val dx = event.getX(1) - event.getX(0)
@@ -413,6 +405,7 @@ class LinerButtonView @JvmOverloads constructor(context: Context, attrs: Attribu
             hypot(dx, dy)
         } else 0f
     }
+
     private fun isTouchInsideSolidLines(touchX: Float, touchY: Float): Boolean {
         val centerY = height / 2f + translationY
         val halfGap = 200f / scaleFactor
@@ -426,6 +419,7 @@ class LinerButtonView @JvmOverloads constructor(context: Context, attrs: Attribu
         isBlurBetweenSolidLinesEnabled = enabled
         invalidate()
     }
+
     fun updateBlurIntensity(intensity: Int) {
         blurredBitmap = originalBitmap?.let { BlurUtils.applyLinearBlur(context, it, intensity) }
         invalidate()
